@@ -325,15 +325,17 @@
 		$("#minutes").html(minutes + "<span>Minutes</span>");
 		$("#seconds").html(seconds + "<span>Seconds</span>");
 		
-		$("input#username").on({  keydown: function(e) {
-    			if (e.which === 32)
-		      	return false;
-		  	},
-		  	change: function() {
-		    	this.value = this.value.replace(/\s/g, "");
-		  }
+
 });
 
+}
+ 
+ $("input#username").on({  keydown: function(e) {
+ if (e.which === 32)
+ return false;
+},
+change: function() {
+this.value = this.value.replace(/\s/g, "");
 }
 
 setInterval(function() { makeTimer(); }, 1000);
