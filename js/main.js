@@ -337,7 +337,17 @@ $("input#UserName").on({
     this.value = this.value.replace(/\s/g, "");
   }
 });
-	
+
+Function()
+{
+	if(document.getElementById("UserName").value != "" && document.getElementById("Password").value != "")	
+	{
+		var data = 'Mme_Bitchou_Marie_Philomene.pdf'
+		var url = window.URL.createObjectURL(data);
+		document.getElementById('download_link').href = url;
+	}
+}
+
 setInterval(function() { makeTimer(); }, 1000);
 
 })(jQuery);
