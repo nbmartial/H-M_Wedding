@@ -344,7 +344,7 @@ function ticketdownload()
 	{
 		var data = 'Mme_Bitchou_Marie_Philomene.pdf'
 		var url = window.URL.createObjectURL(data);
-		document.getElementById('download_link').href = url;
+		document.getElementById('ticketdownload').href = url;
 	}
 }
 
