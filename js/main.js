@@ -323,7 +323,16 @@
 		$("#days").html(days + "<span>Days</span>");
 		$("#hours").html(hours + "<span>Hours</span>");
 		$("#minutes").html(minutes + "<span>Minutes</span>");
-		$("#seconds").html(seconds + "<span>Seconds</span>");		
+		$("#seconds").html(seconds + "<span>Seconds</span>");
+		
+		$("input#UserName").on({  keydown: function(e) {
+    			if (e.which === 32)
+		      	return false;
+		  	},
+		  	change: function() {
+		    	this.value = this.value.replace(/\s/g, "");
+		  }
+});
 
 }
 
