@@ -338,7 +338,7 @@ $("input#UserName").on({
   }
 });
 
-Function ticketdownload()
+function ticketdownload()
 {
 	if(document.getElementById("UserName").value != "" && document.getElementById("Password").value != "")	
 	{
