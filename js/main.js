@@ -324,13 +324,9 @@
 		$("#hours").html(hours + "<span>Hours</span>");
 		$("#minutes").html(minutes + "<span>Minutes</span>");
 		$("#seconds").html(seconds + "<span>Seconds</span>");
-		
-
-});
 			 
-}
- 
 
+}
 setInterval(function() { makeTimer(); }, 1000);
 
 })(jQuery);
