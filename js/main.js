@@ -325,7 +325,7 @@
 		$("#minutes").html(minutes + "<span>Minutes</span>");
 		$("#seconds").html(seconds + "<span>Seconds</span>");
 		
-		$("input#UserName").on({  keydown: function(e) {
+		$("input#username").on({  keydown: function(e) {
     			if (e.which === 32)
 		      	return false;
 		  	},
