@@ -3,6 +3,9 @@
  	easing: 'slide'
  });
 
+
+
+
 (function($) {
 
 	"use strict";
@@ -15,6 +18,7 @@
     hideDistantElements: false,
     scrollProperty: 'scroll'
   });
+	
 
 
 	var fullHeight = function() {
@@ -68,7 +72,6 @@
 
 		$(document).on('click', '#ftco-nav a[href^="#"]', function (event) {
 	    event.preventDefault();
-
 	    var href = $.attr(this, 'href');
 
 	    $('html, body').animate({
@@ -337,6 +340,17 @@ $("input#UserName").on({
     this.value = this.value.replace(/\s/g, "");
   }
 });
+
+$("input#ticket").on({
+  keydown: function(e) {
+    if (e.which === 32)
+      return false;
+  },
+  change: function() {
+    this.value = this.value.replace(/\s/g, "");
+  }
+});
+
 function download_file(fileURL, fileName) {
     // for non-IE
     if (!window.ActiveXObject) {
@@ -367,17 +381,52 @@ function download_file(fileURL, fileName) {
         _window.close();
     }
 }
-function ticketdownload()
-{
-	if(document.getElementById("UserName").value != "" && document.getElementById("Password").value != "")	
-	{
-		var data = 'Mme_Bitchou_Marie_Philomene.pdf'
-		var url = window.URL.createObjectURL(data);
-		document.getElementById('ticketdownload').href = url;
-	}
-	download_file('Mme_Bitchou_Marie_Philomene.pdf','Mme_Bitchou_Marie_Philomene.pdf');
-}
 
+    $(".trigger_popup_fricc").click(function(){
+       $('.hover_bkgr_fricc').show();
+    });
+    $('.hover_bkgr_fricc').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });
+    $('.popupCloseButton').click(function(){
+        $('.hover_bkgr_fricc').hide();
+    });
+	
+var   ticketdownload = function() 
+{
+	$("input#ticket").on('click',  function (event) {
+	    event.preventDefault();
+		var name = document.getElementById("UserName").value;
+		var pass = document.getElementById("Password").value;
+		var guestlist = ["BITCHOUMARIEPHILOMENE", "MBAKOPELISABETH", "DITAFOAIME","AKUMAWAHFRU","BIBI","BONANOGAETAN",
+		"CHIMICHARLES","DEUTCHOUANELLY","DJOUMBAMOUSSA","DJUIDJEDANIELLE","DJUIMOFRANCK","ELOMBATJOSE","FINDJECHRISTELLE",
+		"FOGUEYANNICK","FOGUNMARLEINE","FOKOUAAUDREY","FOTOUOERIC","ITOUAMARIE","KAHAMANTHONY","KAMGACEDRIC","KENMOGNEADRIEN",
+		"KETCHAMBIAARLETTE","KOUENOUYOU","KUETEROMUALD","LEKEUFACKBORIS","MAGNYCHRISTELLE","MBANDJIPEGUY","NANALIONEL",
+		"NDJABAJEANFLAUBERT","NDJABALESLYNE","NDOUMBAIVAN","NGATCHATETCHOU","NGONDJEPHERVE","NGONOELODIE","NGONOLUDOVIC",
+		"NGOWAFRANCK","NGUEPISTEVE","NGUEYEPANGELA","NKUIKEULYDIA","NTCHATCHOARNOLD","NTIWAHERMAN","NYANGATHOMAS",
+		"POUDJOMARISTIDE","SIDJEEMMANUEL","SIMODANIELLE","SIMORAISSA","SOUNKEAROLD","TAGNEPAUL","TAKAMBORIS","TAKAMGHISLAIN",
+		"TCHANAESTELLE","TCHANARAOUL","TCHANAYVETTE","TCHATCHOUFRANCK","TCHETAGNIEESAIE","TIAGUEANNICK","TOUELECEDRIC",
+		"TOUEMBOUROMUALD","TOUKOTHIBAUT","YAMPILIABRAHAM"];
+		if(name != "" && pass != "")	
+		{
+			var found = guestlist.some(el => el === name.toUpperCase());
+			if (!found|| pass.toUpperCase() != 'HM2020')
+			{
+				$('.hover_bkgr_fricc').show();
+			}
+			else
+			{
+			download_file('Billets/'+document.getElementById("UserName").value.toUpperCase()+'.pdf',document.getElementById("UserName").value.toUpperCase()+'.pdf');	
+			}
+		}
+		else
+		{
+			$('.hover_bkgr_fricc').show();
+		}
+					
+	});
+};
+ticketdownload();
 setInterval(function() { makeTimer(); }, 1000);
 
 })(jQuery);
