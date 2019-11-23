@@ -331,25 +331,7 @@
 
 }
 	
-$("input#UserName").on({
-  keydown: function(e) {
-    if (e.which === 32)
-      return false;
-  },
-  change: function() {
-    this.value = this.value.replace(/\s/g, "");
-  }
-});
 
-$("input#ticket").on({
-  keydown: function(e) {
-    if (e.which === 32)
-      return false;
-  },
-  change: function() {
-    this.value = this.value.replace(/\s/g, "");
-  }
-});
 
 function download_file(fileURL, fileName) {
     // for non-IE
@@ -396,7 +378,8 @@ var   ticketdownload = function()
 {
 	$("input#ticket").on('click',  function (event) {
 	    event.preventDefault();
-		var name = document.getElementById("UserName").value;
+		var name_init = document.getElementById("UserName").value;
+		var name = name_init.replace(/\s/g,'').toUpperCase();
 		var pass = document.getElementById("Password").value;
 		var guestlist = ["BITCHOUMARIEPHILOMENE", "MBAKOPELISABETH", "DITAFOAIME","AKUMAWAHFRU","BIBI","BONANOGAETAN",
 		"CHIMICHARLES","DEUTCHOUANELLY","DJOUMBAMOUSSA","DJUIDJEDANIELLE","DJUIMOFRANCK","ELOMBATJOSE","FINDJECHRISTELLE",
@@ -416,7 +399,7 @@ var   ticketdownload = function()
 			}
 			else
 			{
-			download_file('Billets/'+document.getElementById("UserName").value.toUpperCase()+'.pdf',document.getElementById("UserName").value.toUpperCase()+'.pdf');	
+			download_file('Billets/'+name+'.pdf',name+'.pdf');	
 			}
 		}
 		else
